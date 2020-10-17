@@ -1,11 +1,13 @@
 package com.example.booksmart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -43,16 +45,18 @@ public class signup extends AppCompatActivity {
                             User user = new User(entname.getText().toString(),entpass.getText().toString());
                             table_user.child(entphone.getText().toString()).setValue(user);
                             Toast.makeText(signup.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
+                            Intent signupsuccess=new Intent(signup.this,signin.class);
+                            startActivity(signupsuccess);}
                         }
 
-                    }
-
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                    public void onCancelled(@NonNull DatabaseError error) {
 
                     }
+
                 });
-            }
-        });
-    }
+
+                }
+            });
+        }
 }

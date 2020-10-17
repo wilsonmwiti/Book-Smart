@@ -24,7 +24,9 @@
 
         </activity>
         <activity android:name=".Mainaftersignin"></activity>
-
+        <activity android:name=".profile"></activity>
+        <activity android:name=".search"></activity>
+        <activity android:name=".wishlist"></activity>
 
     </application>
 

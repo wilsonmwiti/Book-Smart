@@ -1,5 +1,6 @@
 package com.example.booksmart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -16,33 +17,30 @@ public class Mainaftersignin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_after_sign_in);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
-        //I added this if statement to keep the selected fragment when rotating the device
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new home()).commit();
-        }
-    }
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-                    switch (item.getItemId()) {
-                        case R.id.nav_home:
-                            selectedFragment = new home();
-                            break;
-                        case R.id.nav_favorites:
-                            selectedFragment = new wishlist();
-                            break;
-                        case R.id.nav_search:
-                            selectedFragment = new search();
-                            break;
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
-                    return true;
+        bottomNav.setSelectedItemId(R.id.nav_home);
+
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        return true;
+                    case R.id.nav_favorites:
+                        startActivity(new Intent(getApplicationContext(), wishlist.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.nav_search:
+                        startActivity(new Intent(getApplicationContext(), search.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.nav_profile:
+                        startActivity(new Intent(getApplicationContext(), profile.class));
+                        overridePendingTransition(0, 0);
+                        return true;
                 }
-            };
+                return false;
+            }
+        });
+    }
 }
 

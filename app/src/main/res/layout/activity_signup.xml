@@ -76,7 +76,7 @@
         android:layout_marginStart="124dp"
         android:layout_marginEnd="124dp"
         android:layout_marginBottom="169dp"
-        android:backgroundTint="#8DBF2A"
+        android:backgroundTint="#F4E0AD"
         android:fontFamily="serif"
         android:text="Sign up"
         android:textSize="18sp"
