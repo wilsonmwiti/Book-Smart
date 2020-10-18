@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/profilebg"
+    android:foregroundTint="#040404">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="83dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="161dp"
+        android:layout_marginEnd="281dp"
+        android:layout_marginBottom="497dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_person_24" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginBottom="516dp"
+        android:fontFamily="serif"
+        android:text="TextView"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/changepass"
+        android:layout_width="218dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="233dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="23dp"
+        android:backgroundTint="#F4E0AD"
+        android:fontFamily="serif"
+        android:text="Change Password"
+        app:layout_constraintBottom_toTopOf="@+id/logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="218dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="153dp"
+        android:backgroundTint="#F4E0AD"
+        android:fontFamily="serif"
+        android:onClick="logout"
+        android:text="Log out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changepass" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="4dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        app:itemBackground="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container"
+        app:menu="@menu/bottom_navigation"
+        tools:ignore="PrivateResource" />
+
+    <LinearLayout
+        android:layout_width="328dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="91dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/changepass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_phone_24" />
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
