@@ -15,11 +15,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.Nullable;
 
-public class profile extends AppCompatActivity {
+import Model.User;
 
+public class profile extends AppCompatActivity {
+    private Button logout;
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    private String userid;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
@@ -27,7 +39,45 @@ public class profile extends AppCompatActivity {
         bottomNav.setSelectedItemId(R.id.nav_profile);
 
         TextView name=(TextView)findViewById(R.id.editTextName);
-        Button logout=findViewById(R.id.logout);
+        logout=(Button)findViewById(R.id.logout);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(profile.this,"Logout successful",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(profile.this,MainActivity.class));
+            }
+        });
+
+        user=FirebaseAuth.getInstance().getCurrentUser();
+        reference= FirebaseDatabase.getInstance().getReference("Users");
+        userid=user.getUid();
+
+        final TextView profname=(TextView)findViewById(R.id.name);
+        final TextView profphone=(TextView)findViewById(R.id.phone);
+        final TextView profemail=(TextView)findViewById(R.id.email);
+
+        reference.child(userid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userprofile=snapshot.getValue(User.class);
+                if(userprofile!=null){
+                    String name=userprofile.name;
+                    String phone=userprofile.phone;
+                    String mail=userprofile.email;
+
+                    profname.setText(name);
+                    profphone.setText("  "+phone);
+                    profemail.setText("  "+mail);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(profile.this,"Something went wrong",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -52,11 +102,5 @@ public class profile extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void logout(View view){
-        Toast.makeText(profile.this, "Log out successful", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(profile.this, MainActivity.class);
-        startActivity(intent);
     }
 }

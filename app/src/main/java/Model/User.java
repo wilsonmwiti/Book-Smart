@@ -1,30 +1,19 @@
 package Model;
 
+import android.widget.SeekBar;
+
 public class User {
-    private String name;
-    private String password;
+    public String email;
+    public String phone;
+    public String name;
 
     public User() {
     }
 
-    public User(String name, String password) {
+    public User(String email,String phone,String name) {
         this.name = name;
-        this.password = password;
+        this.email= email;
+        this.phone= phone;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

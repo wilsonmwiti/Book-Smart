@@ -8,7 +8,7 @@
     android:background="@drawable/background">
 
     <EditText
-        android:id="@+id/entphone"
+        android:id="@+id/email"
         android:layout_width="291dp"
         android:layout_height="51dp"
         android:layout_marginStart="60dp"
@@ -19,7 +19,7 @@
         android:backgroundTint="#CAC7C7"
         android:ems="10"
         android:fontFamily="serif"
-        android:hint="Phone number"
+        android:hint="Email ID"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/entphone" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <Button
         android:id="@+id/button3"
@@ -64,4 +64,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/entpass" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

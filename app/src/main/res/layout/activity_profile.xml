@@ -31,29 +31,12 @@
         android:layout_marginEnd="134dp"
         android:layout_marginBottom="516dp"
         android:fontFamily="serif"
-        android:text="TextView"
         android:textColor="@color/cardview_light_background"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/changepass"
-        android:layout_width="218dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="233dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="23dp"
-        android:backgroundTint="#F4E0AD"
-        android:fontFamily="serif"
-        android:text="Change Password"
-        app:layout_constraintBottom_toTopOf="@+id/logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <Button
         android:id="@+id/logout"
@@ -68,8 +51,7 @@
         android:text="Log out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changepass" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -88,14 +70,13 @@
         tools:ignore="PrivateResource" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="328dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="42dp"
-        android:layout_marginBottom="91dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/changepass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4">
@@ -105,13 +86,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_phone_24" />
+
         <TextView
             android:id="@+id/phone"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:fontFamily="serif"
+            android:textAlignment="textStart" />
 
 
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="328dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="42dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_baseline_mail_24" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:textAlignment="textStart" />
     </LinearLayout>
 
 
