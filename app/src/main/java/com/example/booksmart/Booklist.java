@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,7 +19,7 @@ import Model.Category;
 public class Booklist extends AppCompatActivity {
 
     FirebaseDatabase database;
-    DatabaseReference booklist;
+    DatabaseReference booklistdat;
     RecyclerView bookrecyclerView;
     RecyclerView.LayoutManager layoutManager;
     String GenreID="";
@@ -30,7 +31,7 @@ public class Booklist extends AppCompatActivity {
         setContentView(R.layout.activity_booklist);
 
         database=FirebaseDatabase.getInstance();
-        booklist=database.getReference("Book");
+        booklistdat=database.getReference("Book");
 
         bookrecyclerView=(RecyclerView)findViewById(R.id.book_recyclerview);
         bookrecyclerView.setHasFixedSize(true);
@@ -49,7 +50,7 @@ public class Booklist extends AppCompatActivity {
         bookAdapter=new FirebaseRecyclerAdapter<Book, Booklist_viewholder>(Book.class,
                 R.layout.book_card,
                 Booklist_viewholder.class,
-                booklist.orderByChild("bgenreid").equalTo(GenreID)
+                booklistdat.orderByChild("bgenreid").equalTo(GenreID)
                 ) {
             @Override
             protected void populateViewHolder(Booklist_viewholder booklist_viewholder, Book book, int i) {
@@ -62,6 +63,9 @@ public class Booklist extends AppCompatActivity {
                 booklist_viewholder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
+                        Intent bookdet=new Intent(Booklist.this,Book_Details.class);
+                        bookdet.putExtra("BookID",bookAdapter.getRef(position).getKey());
+                        startActivity(bookdet);
 
                     }
                 });

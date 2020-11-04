@@ -37,6 +37,7 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-database:1.2.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
 
     implementation 'com.google.firebase:firebase-auth:16.0.5'
     testImplementation 'junit:junit:4.12'

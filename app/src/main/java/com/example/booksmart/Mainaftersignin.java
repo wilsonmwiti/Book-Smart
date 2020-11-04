@@ -85,7 +85,9 @@ public class Mainaftersignin extends AppCompatActivity {
                 booklist_viewholder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-
+                        Intent bookdet=new Intent(Mainaftersignin.this,Book_Details.class);
+                        bookdet.putExtra("BookID",topbookAdapter.getRef(position).getKey());
+                        startActivity(bookdet);
                     }
                 });
             }
